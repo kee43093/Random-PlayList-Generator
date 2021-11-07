@@ -1,0 +1,22 @@
+*{
+    margin:0;
+    background:url('./images/Turntables.jpeg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+nav {
+    position:relative;
+    height: 25px;
+    left:1rem;
+}
+
+ul{
+    display: flex;
+    
+}
+
+li{
+    list-style: none;  
+    margin-left: 15px;
+    color:white;
+}
