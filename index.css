@@ -1,13 +1,19 @@
-*{
+body{
     margin:0;
     background:url('./images/Turntables.jpeg');
     background-repeat: no-repeat;
     background-size: cover;
 }
+
 nav {
     position:relative;
+    background: transparent;
+    top: 20rem;
+    position: relative;
     height: 25px;
-    left:1rem;
+    left: 22rem;
+    background: transparent;
+    width: 378px;
 }
 
 ul{
