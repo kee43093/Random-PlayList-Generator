@@ -38,7 +38,6 @@ var connection = mysql.createConnection({
   // db port
   port: 3306, 
   user: "root",  
-  password: "Glevy9897Ahrens",
   database:"randomPlaylist_db"
 });
 
