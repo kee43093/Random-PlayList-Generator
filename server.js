@@ -9,7 +9,7 @@ var mysql = require('mysql');
 // const helmet = require('helmet')
 // const addRequestId = require('express-request-id')();
 
-
+const axios = require('axios')
 // Sets up the Express App
 // =============================================================
  const app = express()
@@ -33,22 +33,22 @@ if (process.env.NODE_ENV === "production") {
 ////////////////////////////////////
 //  create database connection ////
 //////////////////////////////////
-var connection = mysql.createConnection({
-  host: "localhost",
-  // db port
-  port: 3306, 
-  user: "root",  
-  password: "Glevy9897Ahrens",
-  database:"randomPlaylist_db"
-});
+// var connection = mysql.createConnection({
+//   host: "localhost",
+//   // db port
+//   port: 3306, 
+//   user: "root",  
+//   password: "Glevy9897Ahrens",
+//   database:"randomPlaylist_db"
+// });
 
-connection.connect(function(err) {
-  if (err) throw err;
-  console.log("connected as id " + connection.threadId);
-  // connection.query("SELECT * FROM products", function(err, data){
-  //   console.table(data)  
-  // })  
-});
+// connection.connect(function(err) {
+//   if (err) throw err;
+//   console.log("connected as id " + connection.threadId);
+//   // connection.query("SELECT * FROM products", function(err, data){
+//   //   console.table(data)  
+//   // })  
+// });
 
 // app.get('/', (req, res) => {
 //   res.send(`we made it!`) 
@@ -56,15 +56,23 @@ connection.connect(function(err) {
 
 
 
-// app.get('/api/products/:type', (req, res)=> {
-//   let type = req.params.type
-//   var sql = `SELECT * FROM Product_info WHERE ProductName = ?`
-//   connection.query(sql, [type], function (err, result) {
-//     if (err) throw err;
-//     console.table(result);
-//     res.send(result)
-//   });
-//  })
+app.get('/api', (req, res)=> {
+    var options = {
+        method: 'GET',
+        url: 'https://theaudiodb.p.rapidapi.com/playlist.php',
+        params: {format: 'track'},
+        headers: {
+          'x-rapidapi-host': 'theaudiodb.p.rapidapi.com',
+          'x-rapidapi-key': 'fa589783b6msh743193034e58c1cp17878bjsn140f133d513d'
+        }
+      };
+      
+      axios.request(options).then(function (response) {
+          console.log(response.data.playlists);
+      }).catch(function (error) {
+          console.error(error);
+      });
+ })
 
 // app.get('/api/products', (req, res) => {
 //   console.log('hello world')
