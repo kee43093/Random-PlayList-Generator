@@ -1,0 +1,110 @@
+    <div class="topnav">
+        <a href="#home">Home</a>
+        <a href="#genres">Genres</a>
+        <a href="#region">Region</a>
+        <a href="#about-us">About Us</a>
+    </div>
+
+        <div class="hero">
+            <h1>Mystery Tunes</h1>
+            <h2>Your Newest Personalized Playlist Generator</h2>
+        </div>
+
+<header class="header"> Most Popular Genres</header>
+        <section id="genres">
+            <div>
+                <h3>Hip-Hop</h3>
+                <img id="hiphop" src='../images/Hiphop.jpeg' width="300px">
+                <h4>Hip-Hop Music, sometimes called rap music is a style of popular music the came around the mid-1970s, and became a large of pop culture during the 1980s. it consists of two main componenets rapping and DJing.</h4>
+            </div>
+            <div>
+                <h3>Country</h3>
+                <img id= "country" src='../images/Country.jpeg' width="300px">
+                <h4>Country Music is a form of popular music origination in the rural southern united states. its normally a mixture of ballads and dance tunes played characteristically on fiddle, guitar, steel guitar, drums, and keyboard.</h4>
+            </div>
+            <div>
+                <h3>Pop</h3>
+                <img id="pop" src="../images/Pop.jpeg" width="300px">
+                <h4>Pop Music is a type of music, normally played on electronic instruments, its popular with alot of people because it consits of short songs with a strong beat and simple tunes that are pretty easy to remember.</h4>
+            </div>
+        </section>
+<header class="header">Most popular songs by region</header>
+        <section id="region">
+            <div class="regional">
+                <h3>USA</h3>
+                    <h4>Easy On Me by Adele</h4>
+                    <h4>Way 2 Sexy (feat. Future, Young Thug) by Drake</h4>
+                    <h4>Knife Talk (feat. 21 Savage, Project Pat) by Drake</h4>
+            </div>
+            <div class="regional">
+                <h3>UK</h3>
+                <ul id="UK songs">
+                    <h4>Easy On Me by Adele</h4>
+                    <h4>Shivers by Ed Sheeran</h4>
+                    <h4>Bad Habits by Ed Sheeran</h4> 
+                </ul>
+            </div>
+            <div class="regional">
+                <h3>Mexico</h3>
+                    <h4>Lo Siento by Tainy, Bad Bunny, Julieta Venegas</h4>
+                    <h4>Yonaguni by Bad Bunny</h4>
+                    <h4>Todo De Ti by Rauw Alejandro</h4>
+            </div>
+        </section>
+
+    <div class="header">Random PlayList Generator Options</div>
+    <div class="wrapper">
+        {{#each playlists}}
+        <div class="cards_wrap">
+            <div class="card_item">
+                <div class="card_inner">
+                    <img src={{strImage}}>
+                    <div class="role_name">{{strPlaylist}}</div>
+                    <div class="real_name">Top Artist</div>
+                    <div class="film">{{strDescription}}</div>
+                </div>
+            </div>
+            {{!-- <div class="card_item">
+                <div class="card_inner">
+                    <img src="doctor_strange.png">
+                    <div class="role_name">Hip-Hop</div>
+                    <div class="real_name">Top Artist</div>
+                    <div class="film">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua.</div>
+                </div>
+            </div>
+            <div class="card_item">
+                <div class="card_inner">
+                    <img src="black_widow.png">
+                    <div class="role_name">Rock & Pop</div>
+                    <div class="real_name">Top Artist</div>
+                    <div class="film">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua.</div>
+                </div>
+            </div> --}}
+        </div>
+         {{/each}}
+    </div>
+
+<header class="header">Social Links</header>
+<footer>
+    <h1>Team Members</h1>
+    <div class="footer-container">
+            <span> <h1>Celeste Farris</h1>
+                <img id='celeste' src='../images/Celeste.jpg' width='300px'>
+                 <p> <a href="https://github.com/cMfarris" > cMfarris.com </a> </p>
+            </span>
+            <span> <h1>Matias Ahrensdorf</h1>
+                <img id='matias' src='../images/Matias.png' width='300px'>
+                <p> <a href="https://github.com/Titoxox97"> Titoxox97.com </a> </p>
+            </span>
+            <span> <h1>Mark Masala</h1>
+                <img src=''>
+                <p> <a href="https://github.com/mmarsala17"> mmarsala17.com </a></p>
+            </span>
+            <span> <h1>Kendall Kee</h1>
+                <img id='kendall' src='../images/Kendall Kee.jpg' width='300px' height='400px'>
+                <p> <a href="https://github.com/kee43093"> kee43093.com</a></p>
+            </span>
+    </div>
+</footer>  

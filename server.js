@@ -1,24 +1,21 @@
-// Dependencies
-// =============================================================
-// require('dotenv').config();
-const router = require("express").Router();
-const express = require('express')
-const cors = require('cors')
-// const path = require('path')
-var mysql = require('mysql');
-// const helmet = require('helmet')
-// const addRequestId = require('express-request-id')();
-
+const express = require('express');
+const exphbs = require('express-handlebars');
 const axios = require('axios')
+
 // Sets up the Express App
 // =============================================================
- const app = express()
- const PORT = process.env.PORT || 3001
+const app = express();
+const PORT = process.env.PORT || 3001;
+
+// Set Handlebars as the default template engine.
+app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
+app.set('view engine', 'handlebars');
 
 
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(express.static("public"));
 // app.use(addRequestId);
 // app.use(helmet())
 // app.use(cors())
@@ -26,9 +23,9 @@ app.use(express.json());
 
 
 // Serve up static assets (usually on heroku)
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/build"));
-}
+// if (process.env.NODE_ENV === "production") {
+//   app.use(express.static("client/build"));
+// }
 
 ////////////////////////////////////
 //  create database connection ////
@@ -56,23 +53,35 @@ if (process.env.NODE_ENV === "production") {
 
 
 
-app.get('/api', (req, res)=> {
-    var options = {
-        method: 'GET',
-        url: 'https://theaudiodb.p.rapidapi.com/playlist.php',
-        params: {format: 'track'},
-        headers: {
-          'x-rapidapi-host': 'theaudiodb.p.rapidapi.com',
-          'x-rapidapi-key': 'fa589783b6msh743193034e58c1cp17878bjsn140f133d513d'
-        }
-      };
-      
-      axios.request(options).then(function (response) {
-          console.log(response.data.playlists);
-      }).catch(function (error) {
-          console.error(error);
-      });
- })
+app.get('/', (req, res)=> {
+  var options = {
+    method: 'GET',
+    url: 'https://theaudiodb.p.rapidapi.com/playlist.php',
+    params: {format: 'album'},
+    headers: {
+      'x-rapidapi-host': 'theaudiodb.p.rapidapi.com',
+      'x-rapidapi-key': 'fa589783b6msh743193034e58c1cp17878bjsn140f133d513d'
+    }
+  };
+  
+  axios.request(options).then(function (response) {
+    const responseArray = response.data.playlists.slice(0, 3)
+    console.log(responseArray)
+    res.render('playlist', {
+      style: 'default.css',
+      playlists: responseArray
+  })
+  }).catch(function (error) {
+    console.error(error);
+  });
+  
+
+  ;
+ });
+
+ 
+//  app.get('/' , (req, res) => {
+//  })
 
 // app.get('/api/products', (req, res) => {
 //   console.log('hello world')
